@@ -28,8 +28,6 @@ namespace SumOrSequentialNumbers
 			listView1.Items.Clear();
 			for (var number = Convert.ToInt32(numericUpDown1.Value); number <= Convert.ToInt32(numericUpDown2.Value); number++)
 			{
-
-
 				listView1.Items.Add(new Number(number).AsListViewItem());
 			}
 		}
@@ -44,7 +42,7 @@ namespace SumOrSequentialNumbers
 
 			public ListViewItem AsListViewItem()
 			{
-				return new ListViewItem(new[] { Value.ToString(), Ways.Count.ToString(), ListToString(Divisors), WaysToString() });
+				return new ListViewItem(new[] { Value.ToString(), Ways.Count.ToString(), BetterWaysCount.ToString(), ListToString(Divisors), WaysToString(), ListToString(BetterWays) }) {Tag = this};
 			}
 
 			private string WaysToString()
@@ -58,12 +56,31 @@ namespace SumOrSequentialNumbers
 			{
 				this.Value = number;
 				FindWays();
+				BetterFindWays();
 			}
 
 			public int Value { get; set; }
 
 			public List<int> Divisors { get; set; } = new List<int>();
+			public List<int> BetterWays { get; set; } = new List<int>();
 			public List<List<int>> Ways { get; set; } = new List<List<int>>();
+
+			public int BetterWaysCount => BetterWays.Count;
+
+			private void BetterFindWays()
+			{
+				var divisorIsOdd = false;
+				for (int divisor = 2; divisor <= Value / 2 + 1; divisor++)
+				{
+					var result = Value / divisor;
+					var remainder = Value % divisor;
+					if (divisorIsOdd && remainder == 0 && result > divisor / 2)
+						BetterWays.Add(divisor);
+					else if (divisor == remainder * 2 && divisor * remainder < Value)
+						BetterWays.Add(divisor);
+					divisorIsOdd = !divisorIsOdd;
+				}
+			}
 
 			private void FindWays()
 			{
@@ -96,10 +113,6 @@ namespace SumOrSequentialNumbers
 			}
 		}
 
-
-
-
-
 		private void numericUpDown1_ValueChanged(object sender, EventArgs e)
 		{
 
@@ -129,6 +142,29 @@ namespace SumOrSequentialNumbers
 			}
 
 			Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			var wrongOnes = new List<int>();
+			foreach (ListViewItem item in listView1.Items)
+			{
+				var number = item.Tag as Number;
+				if (number != null)
+				{
+					if (number.BetterWaysCount!=number.Ways.Count)
+						wrongOnes.Add(number.Value);
+				}
+			}
+
+			if (wrongOnes.Count > 0)
+			{
+				MessageBox.Show("These numbers are wrong:" + String.Join(",", wrongOnes));
+			}
+			else
+			{
+				MessageBox.Show("Yes, the result is the same for all numbers tested.");
+			}
 		}
 	}
 }

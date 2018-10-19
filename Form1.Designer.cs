@@ -30,7 +30,7 @@
 		{
 			this.listView1 = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.noOfWays1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
 			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -40,6 +40,9 @@
 			this.button1 = new System.Windows.Forms.Button();
 			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.button2 = new System.Windows.Forms.Button();
+			this.noOfWays2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.button3 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
 			this.panel1.SuspendLayout();
@@ -53,9 +56,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2,
+            this.noOfWays1,
+            this.noOfWays2,
             this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.columnHeader6});
 			this.listView1.FullRowSelect = true;
 			this.listView1.GridLines = true;
 			this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -72,15 +77,15 @@
 			this.columnHeader1.Text = "Number";
 			this.columnHeader1.Width = 103;
 			// 
-			// columnHeader2
+			// noOfWays1
 			// 
-			this.columnHeader2.Text = "Number of ways";
-			this.columnHeader2.Width = 122;
+			this.noOfWays1.Text = "Number of ways";
+			this.noOfWays1.Width = 122;
 			// 
 			// columnHeader3
 			// 
 			this.columnHeader3.Text = "Divisors";
-			this.columnHeader3.Width = 797;
+			this.columnHeader3.Width = 223;
 			// 
 			// numericUpDown1
 			// 
@@ -171,6 +176,7 @@
 			// columnHeader4
 			// 
 			this.columnHeader4.Text = "Ways";
+			this.columnHeader4.Width = 550;
 			// 
 			// button2
 			// 
@@ -182,11 +188,31 @@
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
+			// noOfWays2
+			// 
+			this.noOfWays2.Text = "Better Way count";
+			this.noOfWays2.Width = 120;
+			// 
+			// columnHeader6
+			// 
+			this.columnHeader6.Text = "Better ways";
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(1128, 40);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(216, 32);
+			this.button3.TabIndex = 7;
+			this.button3.Text = "Are Both Ways The Same?";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1520, 646);
+			this.Controls.Add(this.button3);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.listView1);
@@ -211,10 +237,13 @@
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private System.Windows.Forms.ColumnHeader columnHeader2;
+		private System.Windows.Forms.ColumnHeader noOfWays1;
 		private System.Windows.Forms.ColumnHeader columnHeader3;
 		private System.Windows.Forms.ColumnHeader columnHeader4;
 		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.ColumnHeader noOfWays2;
+		private System.Windows.Forms.ColumnHeader columnHeader6;
+		private System.Windows.Forms.Button button3;
 	}
 }
 
